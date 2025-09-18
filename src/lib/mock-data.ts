@@ -6,7 +6,10 @@ export const mockStudents: Student[] = [
     name: 'Alice Johnson',
     email: 'alice@example.com',
     avatar: 'https://placehold.co/100x100.png',
-    lessons: [{ lessonId: '101', status: 'Completed' }, { lessonId: '102', status: 'In Progress' }],
+    lessons: [
+      { lessonId: '101', status: 'Completed' },
+      { lessonId: '102', status: 'In Progress' },
+    ],
   },
   {
     id: '2',
@@ -34,7 +37,10 @@ export const mockStudents: Student[] = [
     name: 'Ethan Davis',
     email: 'ethan@example.com',
     avatar: 'https://placehold.co/100x100.png',
-    lessons: [{ lessonId: '102', status: 'Completed' }, { lessonId: '103', status: 'In Progress' }],
+    lessons: [
+      { lessonId: '102', status: 'Completed' },
+      { lessonId: '103', status: 'In Progress' },
+    ],
   },
 ];
 
@@ -59,19 +65,43 @@ export const mockLessons: Lesson[] = [
   },
 ];
 
-
 export const mockChats: Record<string, Message[]> = {
   '1': [
-    { id: 'msg1', sender: 'student', text: 'Hi, I have a question about the first assignment.', timestamp: new Date(Date.now() - 1000 * 60 * 5) },
-    { id: 'msg2', sender: 'instructor', text: 'Hello Alice, I am here to help. What is your question?', timestamp: new Date(Date.now() - 1000 * 60 * 4) },
+    {
+      id: 'msg1',
+      sender: 'student',
+      text: 'Hi, I have a question about the first assignment.',
+      timestamp: new Date(Date.now() - 1000 * 60 * 5),
+    },
+    {
+      id: 'msg2',
+      sender: 'instructor',
+      text: 'Hello Alice, I am here to help. What is your question?',
+      timestamp: new Date(Date.now() - 1000 * 60 * 4),
+    },
   ],
   '2': [
-    { id: 'msg3', sender: 'student', text: 'Can we get an extension for the project?', timestamp: new Date(Date.now() - 1000 * 60 * 10) },
+    {
+      id: 'msg3',
+      sender: 'student',
+      text: 'Can we get an extension for the project?',
+      timestamp: new Date(Date.now() - 1000 * 60 * 10),
+    },
   ],
   '3': [],
   '4': [],
   '5': [
-     { id: 'msg4', sender: 'student', text: 'I am really enjoying the Python course!', timestamp: new Date(Date.now() - 1000 * 60 * 20) },
-     { id: 'msg5', sender: 'instructor', text: 'Glad to hear that, Ethan!', timestamp: new Date(Date.now() - 1000 * 60 * 19) },
+    {
+      id: 'msg4',
+      sender: 'student',
+      text: 'I am really enjoying the Python course!',
+      timestamp: new Date(Date.now() - 1000 * 60 * 20),
+    },
+    {
+      id: 'msg5',
+      sender: 'instructor',
+      text: 'Glad to hear that, Ethan!',
+      timestamp: new Date(Date.now() - 1000 * 60 * 19),
+    },
   ],
 };
