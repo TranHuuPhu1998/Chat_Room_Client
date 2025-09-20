@@ -11,7 +11,7 @@ import { SendHorizonal, Wifi, WifiOff } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { mockStudents } from '@/lib/mock-data';
 import type { Student, Message } from '@/lib/types';
-import { useSocket, useSocketConnection, useSocketMessages } from '@/hooks/useSocket';
+import { useSocket, useSocketConnection } from '@/hooks/useSocket';
 
 export default function ChatLayout() {
   const [students] = React.useState<Student[]>(mockStudents);
@@ -22,45 +22,45 @@ export default function ChatLayout() {
 
   // Socket.io hooks
   const { isConnected } = useSocketConnection();
-  const { messages, sendMessage } = useSocketMessages();
-  const { joinRoom, leaveRoom, setUser } = useSocket();
+  // const { messages, sendMessage } = useSocketMessages();
+  // const { joinRoom, leaveRoom, setUser } = useSocket();
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
   // Set user when component mounts
-  React.useEffect(() => {
-    setUser({
-      id: 'instructor-1',
-      name: 'Instructor',
-      role: 'instructor',
-    });
-  }, [setUser]);
+  // React.useEffect(() => {
+  //   setUser({
+  //     id: 'instructor-1',
+  //     name: 'Instructor',
+  //     role: 'instructor',
+  //   });
+  // }, [setUser]);
 
   // Handle room changes
-  React.useEffect(() => {
-    if (selectedStudent) {
-      const roomId = `chat-${selectedStudent.id}`;
-      if (currentRoom && currentRoom !== roomId) {
-        leaveRoom(currentRoom);
-      }
-      joinRoom(roomId);
-      setCurrentRoom(roomId);
-    }
-  }, [selectedStudent, joinRoom, leaveRoom, currentRoom]);
+  // React.useEffect(() => {
+  //   if (selectedStudent) {
+  //     const roomId = `chat-${selectedStudent.id}`;
+  //     if (currentRoom && currentRoom !== roomId) {
+  //       leaveRoom(currentRoom);
+  //     }
+  //     joinRoom(roomId);
+  //     setCurrentRoom(roomId);
+  //   }
+  // }, [selectedStudent, joinRoom, leaveRoom, currentRoom]);
 
-  React.useEffect(() => {
-    scrollToBottom();
-  }, [messages, selectedStudent]);
+  // React.useEffect(() => {
+  //   scrollToBottom();
+  // }, [messages, selectedStudent]);
 
-  const handleSendMessage = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!message.trim() || !selectedStudent || !isConnected) return;
+  // const handleSendMessage = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (!message.trim() || !selectedStudent || !isConnected) return;
 
-    sendMessage(message, 'instructor');
-    setMessage('');
-  };
+  //   sendMessage(message, 'instructor');
+  //   setMessage('');
+  // };
 
   return (
     <Card className="h-[calc(100vh-220px)] w-full flex flex-col md:flex-row">

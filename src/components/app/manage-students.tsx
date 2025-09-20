@@ -66,12 +66,18 @@ export default function StudentTable() {
       setStudents((prev) => [payload.student, ...prev]);
     };
 
+    const handleStudentDeleted = (payload: { id: string }) => {
+      setStudents((prev) => prev.filter((student) => student.id !== payload.id));
+    };
+
     socket.on('send-list-of-students', handleSendListOfStudents);
     socket.on('student-added', handleStudentAdded);
+    socket.on('student-deleted', handleStudentDeleted);
 
     return () => {
       socket.off('send-list-of-students', handleSendListOfStudents);
       socket.off('student-added', handleStudentAdded);
+      socket.off('student-deleted', handleStudentDeleted);
     };
   }, [socket]);
 
@@ -141,6 +147,10 @@ export default function StudentTable() {
   const confirmDelete = () => {
     if (selectedStudent) {
       setStudents(students.filter((s) => s.id !== selectedStudent.id));
+      // Delete student via Socket.io
+      if (socket && isConnected) {
+        socket.emit('delete-student', { id: selectedStudent.id });
+      }
       toast.success('Student deleted.');
     }
     setDeleteDialogOpen(false);
