@@ -1,6 +1,6 @@
 import ManageLessons from '@/components/app/manage-lessons';
 import { Suspense } from 'react';
-import { Skeleton } from '@/components/ui/skeleton';
+import BasicFullscreenLoader from '@/components/common/components/BasicFullscreenLoader';
 
 export default function LessonsPage() {
   return (
@@ -11,7 +11,7 @@ export default function LessonsPage() {
           Create new lessons and assign them to your students.
         </p>
       </div>
-      <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
+      <Suspense fallback={<BasicFullscreenLoader />}>
         <ManageLessons />
       </Suspense>
     </div>

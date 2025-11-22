@@ -31,8 +31,8 @@ export default function AppLayout({ children }: { children: React.ReactNode }) {
       icon: BookCopy,
     },
     {
-      label: 'Message',
-      href: '/message',
+      label: 'Class Live Chat',
+      href: '/class-live-chat',
       icon: MessageSquare,
     },
   ];

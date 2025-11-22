@@ -1,6 +1,6 @@
 import StudentTable from '@/components/app/manage-students';
 import { Suspense } from 'react';
-import { Skeleton } from '@/components/ui/skeleton';
+import BasicFullscreenLoader from '@/components/common/components/BasicFullscreenLoader';
 
 export default function StudentsPage() {
   return (
@@ -11,7 +11,7 @@ export default function StudentsPage() {
           View, add, edit, and manage all student profiles in your classroom.
         </p>
       </div>
-      <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
+      <Suspense fallback={<BasicFullscreenLoader />}>
         <StudentTable />
       </Suspense>
     </div>

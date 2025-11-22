@@ -3,7 +3,6 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { io, Socket } from 'socket.io-client';
 import { ServerToClientEvents, ClientToServerEvents, SocketContextType } from '@/types/socket';
-import { Message } from '@/lib/types';
 
 const SocketContext = createContext<SocketContextType | undefined>(undefined);
 
@@ -16,10 +15,6 @@ export const SocketProvider: React.FC<SocketProviderProps> = ({ children }) => {
     null
   );
   const [isConnected, setIsConnected] = useState(false);
-  const [onlineUsers, setOnlineUsers] = useState<
-    { id: string; name: string; role: 'instructor' | 'student' }[]
-  >([]);
-  const [messages, setMessages] = useState<Message[]>([]);
 
   useEffect(() => {
     // Initialize socket connection
